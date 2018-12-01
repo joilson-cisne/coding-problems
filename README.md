@@ -1,2 +1,2 @@
-# coding-challenges
-Some interview coding challenges
+# coding-problems
+Some interview coding problems
