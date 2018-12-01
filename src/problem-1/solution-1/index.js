@@ -1,16 +1,14 @@
 module.exports = (numbers, k) => {
-  let result = false
+  for (let i = 0; i < numbers.length - 1; i++) {
+    const first = numbers[i];
+    for (let j = i + 1; j < numbers.length; j++) {
+      const second = numbers[j];
 
-  numbers.forEach((first, firstIndex) => {
-    numbers.forEach((second, secondIndex) => {
-      if (
-        (firstIndex !== secondIndex)
-        && (first + second === k)
-      ) {
-        result = true
+      if (first + second === k) {
+        return true
       }
-    })
-  })
+    }
+  }
 
-  return result
+  return false
 }
