@@ -1,0 +1,24 @@
+{
+  "name": "coding-problems",
+  "version": "1.0.0",
+  "description": "Some interview coding problems",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha '**/*.spec.js'",
+    "test:watch": "npm run test -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joilson-cisne/coding-problems.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joilson-cisne/coding-problems/issues"
+  },
+  "homepage": "https://github.com/joilson-cisne/coding-problems#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
+  }
+}
