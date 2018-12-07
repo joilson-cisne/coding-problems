@@ -15,13 +15,14 @@ const deserialize = (str) => {
   data = str.split(SEPARATOR)
 
   const deserializer = () => {
-    if (data.length === 0 || data[0] === EMPTY_NODE) {
-      data.shift()
+    let value = data.shift()
+
+    if (value === EMPTY_NODE) {
       return null
     }
      
     var node = Node(
-      data.shift(),
+      value,
       deserializer(),
       deserializer()
     )
