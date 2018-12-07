@@ -104,6 +104,19 @@ describe('Problem #3 - solution 2', () => {
       });
     });
 
+    describe('When str is "root..#..right..#..#"', () => {
+      it('should work', () => {
+        const expected = {
+          val: 'root',
+          left: null,
+          right: { val: 'right', left: null, right: null }
+        }
+
+        expect(deserialize('root..#..right..#..#'))
+          .to.deep.equal(expected)
+      });
+    });
+
     describe('When using the problem example', () => {
       it('should work', () => {
         const expected = {
@@ -116,10 +129,8 @@ describe('Problem #3 - solution 2', () => {
           right: { val: 'right', left: null, right: null }
         }
 
-        // expect(deserialize('root..left..left.left..#..#..#..right..#..#'))
-        //   .to.deep.equal({})
-        expect(deserialize('root..#..right..#..#'))
-          .to.deep.equal({})
+        expect(deserialize('root..left..left.left..#..#..#..right..#..#'))
+          .to.deep.equal(expected)
       });
     });
   });

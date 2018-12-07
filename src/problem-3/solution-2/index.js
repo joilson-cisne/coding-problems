@@ -7,27 +7,29 @@ const serialize = (root) => {
   return `${root.val}${SEPARATOR}${serialize(root.left)}${SEPARATOR}${serialize(root.right)}`
 }
 
-const deserialize = (str) => {
-  data = str.split(SEPARATOR)
-  
-  let index = 0
+let data
 
-  const deserializer = (data) => {
-    console.log('index:', index)
-    if (index > data.length || data[index] === EMPTY_NODE) {
+const deserialize = (str) => {
+  if (!str) { return null }
+
+  data = str.split(SEPARATOR)
+
+  const deserializer = () => {
+    if (data.length === 0 || data[0] === EMPTY_NODE) {
+      data.shift()
       return null
     }
      
     var node = Node(
-      data[index++], // TODO: index is not being uptaded :( clousure
-      deserializer(data),
-      deserializer(data)
+      data.shift(),
+      deserializer(),
+      deserializer()
     )
 
     return node
   }
   
-  return deserializer(data)
+  return deserializer()
 }
 
 const Node = (val, left = null, right = null) => ({ val, left, right })
