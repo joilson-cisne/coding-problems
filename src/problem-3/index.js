@@ -1,5 +1,5 @@
 const serialize = (root) => {
-  if (!root || isEmpty(root)) { return '()' }
+  if (!root || !root.val) { return '()' }
 
   return `(${root.val}${serialize(root.left)}${serialize(root.right)})`
 }
@@ -17,6 +17,8 @@ const deserialize = (str) => {
   return { val, left, right }
 }
 
+const Node = (val, left, right) => ({ val, left, right })
+
 function isEmpty(obj) {
   for(var key in obj) {
     if(obj.hasOwnProperty(key))
@@ -28,4 +30,5 @@ function isEmpty(obj) {
 module.exports = {
   serialize,
   deserialize,
+  Node
 }

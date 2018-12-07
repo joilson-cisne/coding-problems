@@ -1,11 +1,11 @@
 const { expect } = require('chai')
-const { serialize, deserialize } = require('.')
+const { serialize, deserialize, Node } = require('.')
 
 describe('Problem #3', () => {
   describe('serialize(...)', () => {
-    describe('When root is {}', () => {
+    describe('When root is Node()', () => {
       it('should return "()"', () => {
-        const root = {}
+        const root = Node()
         expect(serialize(root)).to.equal('()')
       });
     });
@@ -16,44 +16,44 @@ describe('Problem #3', () => {
       });
     });
 
-    describe('When root is { val: ""}', () => {
+    describe('When root is Node("")', () => {
       it('should return "()"', () => {
-        const root = { val: '' }
+        const root = Node('')
         expect(serialize()).to.equal('()')
       });
     });
 
-    describe('When root is { val: 1 }', () => {
+    describe('When root is Node("1")', () => {
       it('should return "(1()())"', () => {
-        const root = { val: 1 }
+        const root = Node('1')
         expect(serialize(root)).to.equal('(1()())')
       });
     });
 
-    describe('When root is { val: 125 }', () => {
+    describe('When root is Node("125")', () => {
       it('should return "(125()())"', () => {
-        const root = { val: 125 }
+        const root = Node('125')
         expect(serialize(root)).to.equal('(125()())')
       });
     });
 
-    describe('When root is { val: "root" }', () => {
+    describe('When root is Node("root")', () => {
       it('should return "(root()())"', () => {
-        const root = { val: 'root' }
+        const root = Node('root')
         expect(serialize(root)).to.equal('(root()())')
       });
     });
 
-    describe('When root is { val: "root", left: { val: 123 } }', () => {
+    describe('When root is Node("root", Node("123"))', () => {
       it('should return "(root(123()())())"', () => {
-        const root = { val: 'root', left: { val: 123 } }
+        const root = Node('root', Node('123'))
         expect(serialize(root)).to.equal('(root(123()())())')
       });
     });
 
     describe('When root is { val: "root", left: { val: 123 } }', () => {
       it('should return "(root(123()())())"', () => {
-        const root = { val: 'root', left: { val: 123 }, right: { val: 321 } }
+        const root = Node('root', Node('123'), Node('321'))
         expect(serialize(root)).to.equal('(root(123()())(321()()))')
       });
     });
