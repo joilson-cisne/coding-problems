@@ -25,4 +25,10 @@ describe('Problem #4 - solution 1', () => {
       expect(solve([])).to.equal(1)
     });
   });
+
+  describe('When input is has duplicates', () => {
+    it('should return correctly', () => {
+      expect(solve([4, 2, 2, 2, 2, 1])).to.equal(3)
+    });
+  });
 });
