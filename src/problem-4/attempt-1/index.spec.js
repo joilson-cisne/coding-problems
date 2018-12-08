@@ -9,13 +9,13 @@ describe('Problem #4 - attempt 1', () => {
   });
 
   describe('When input is [1, 2, 0]', () => {
-    it('should return 2', () => {
+    it('should return 3', () => {
       expect(solve([1, 2, 0])).to.equal(3)
     });
   });
 
   describe('When input is [-1, -2, -3]', () => {
-    it('should return 2', () => {
+    it('should return 1', () => {
       expect(solve([-1, -2, -3])).to.equal(1)
     });
   });
