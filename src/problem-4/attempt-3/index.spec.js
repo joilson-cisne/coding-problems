@@ -1,7 +1,7 @@
 const { expect } = require('chai')
 const solve = require('.')
 
-describe('Problem #4 - solution 1', () => {
+describe('Problem #4 - attempt 3', () => {
   describe('When input is [3, 4, -1, 1]', () => {
     it('should return 2', () => {
       expect(solve([3, 4, -1, 1])).to.equal(2)
