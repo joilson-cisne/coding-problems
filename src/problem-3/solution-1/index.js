@@ -13,7 +13,7 @@ const deserialize = (str) => {
   let data = str.split(SEPARATOR)
 
   const deserializer = () => {
-    let value = data.shift()
+    let value = data.shift()  // worse case O(n) time complexity
 
     if (value === EMPTY_NODE) {
       return null
