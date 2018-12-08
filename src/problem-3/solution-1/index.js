@@ -7,12 +7,10 @@ const serialize = (root) => {
   return `${root.val}${SEPARATOR}${serialize(root.left)}${SEPARATOR}${serialize(root.right)}`
 }
 
-let data
-
 const deserialize = (str) => {
   if (!str) { return null }
 
-  data = str.split(SEPARATOR)
+  let data = str.split(SEPARATOR)
 
   const deserializer = () => {
     let value = data.shift()
