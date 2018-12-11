@@ -1,10 +1,71 @@
-module.exports = (input) => {
-  // 1. Move negatives and zeros to the left
-  // 2. For each i >= x, where n = abs(input[i]), 0 < n < input.length, multiply if (input[n] > 0) input[n] * (-1)
-  // 2.1 x is the index of the first input[x] > 0. Create a offset considering x, such that x will represent the index 1
-  // 3. Iterate on the list and find the first i where input[i] > 0. Then the response will be (i - offset)
+const solve = (input) => {
+  input = movePositivesToTheRight(input)
 
-  let candidate = 1
+  let offset
+  
+  for (let i = 0; i < input.length; i++) {
+    const element = input[i];
+    
+    if (element > 0) {
+      offset = i - 1
+      break
+    } // So the first positive number has virtual index === 1
+  }
 
-  return candidate
+  for (let i = offset + 1; i < input.length; i++) {
+    const n = Math.abs(input[i])
+
+    if (n + offset >= input.length) { continue }
+
+    if (input[n + offset] > 0) {
+      input[n + offset] = input[n + offset] * (-1)
+    }
+  }
+  
+  for (let i = offset + 1; i < input.length; i++) {
+    const element = input[i];
+    
+    if (element > 0) {
+      return i - offset
+    }
+  }
+
+  return input.length - offset + 1
+}
+
+const movePositivesToTheRight = (array) => {
+  let i = 0
+  let j = array.length - 1
+
+  while(i < j) {
+    if (array[i] > 0 && array[j] <= 0) {
+      swap(array, i, j)
+      ++i
+      --j
+    }
+    
+    if (array[i] <= 0) {
+      ++i
+    }
+
+    if (array[j] > 0) {
+      --j
+    }
+  }
+  
+  return array
+}
+
+const swap = (array, i, j) => {
+  const temp = array[i]
+  array[i] = array[j]
+  array[j] = temp
+
+  return array
+}
+
+module.exports = {
+  solve,
+  swap,
+  movePositivesToTheRight
 }
