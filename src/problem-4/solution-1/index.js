@@ -12,6 +12,10 @@ const solve = (input) => {
     } // So the first positive number has virtual index === 1
   }
 
+  if (offset === undefined) {
+    return 1
+  }
+
   for (let i = offset + 1; i < input.length; i++) {
     const n = Math.abs(input[i])
 
@@ -30,7 +34,7 @@ const solve = (input) => {
     }
   }
 
-  return input.length - offset + 1
+  return input.length - offset
 }
 
 const movePositivesToTheRight = (array) => {
