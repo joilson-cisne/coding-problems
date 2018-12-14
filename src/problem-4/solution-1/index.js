@@ -1,21 +1,40 @@
 const solve = (input) => {
   input = movePositivesToTheRight(input)
-
-  let offset
+  const firstPositiveIndex = getFirstPositiveIndex(input)
   
-  for (let i = 0; i < input.length; i++) {
-    const element = input[i];
-    
-    if (element > 0) {
-      offset = i - 1
-      break
-    } // So the first positive number has virtual index === 1
-  }
-
-  if (offset === undefined) {
+  if (firstPositiveIndex === undefined) {
     return 1
   }
 
+  const offset = firstPositiveIndex - 1 // So that the first positive number has virtualIndex === 1
+  markVisitedIndexes(input, offset)
+  const index = getFirstNotVisitedIndex(input)
+  const virtualIndex = index - offset
+
+  return virtualIndex
+}
+
+const getFirstPositiveIndex = (input) => {
+  for (let i = 0; i < input.length; i++) {
+    if (input[i] > 0) {
+      return i
+    }
+  }
+}
+
+const getFirstNotVisitedIndex = (input) => {
+  let index
+
+  for (index = 0; index < input.length; index++) {
+    if (input[index] > 0) {
+      return index
+    }
+  }
+
+  return index
+}
+
+const markVisitedIndexes = (input, offset) => {
   for (let i = offset + 1; i < input.length; i++) {
     const n = Math.abs(input[i])
 
@@ -25,16 +44,6 @@ const solve = (input) => {
       input[n + offset] = input[n + offset] * (-1)
     }
   }
-  
-  for (let i = offset + 1; i < input.length; i++) {
-    const element = input[i];
-    
-    if (element > 0) {
-      return i - offset
-    }
-  }
-
-  return input.length - offset
 }
 
 const movePositivesToTheRight = (array) => {
