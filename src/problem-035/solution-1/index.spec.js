@@ -1,7 +1,7 @@
 const { expect } = require('chai')
 const { solve } = require('.')
 
-describe('Problem #34 - solution 1', () => {
+describe('Problem #35 - solution 1', () => {
   describe('solve()', () => {
     it('should return the input array on the right order', () => {
       expect(solve(['G', 'B', 'R'])).to.deep.equal(['R', 'G', 'B'])
