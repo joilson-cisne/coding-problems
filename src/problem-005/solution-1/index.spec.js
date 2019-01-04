@@ -1,7 +1,7 @@
 const { expect } = require('chai')
 const { cons, car, cdr } = require('.')
 
-describe.only('Problem #5 - solution 1', () => {
+describe('Problem #5 - solution 1', () => {
   describe('car()', () => {
     it('should return the first item', () => {
       expect(car(cons(1, 4))).to.equal(1)
